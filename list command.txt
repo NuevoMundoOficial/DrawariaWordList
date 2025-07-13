@@ -1,0 +1,131 @@
+Mis Comandos Favoritos del clientcmd:
+
+Estos comandos son acciones clave para controlar la experiencia de juego de tu bot o tu propia interfaz.
+
+Votar por Pista de Música (votetrack)
+ID del Comando: 1
+Parámetros: [trackid] (número entero)
+trackid: El identificador de la pista de música por la que deseas votar. Cada canción en el juego tiene un ID. Si el ID no es válido, el comando no tendrá efecto.
+Ejemplo de uso: Para votar por una pista, usarías el ID 1 y el ID de la canción. Por ejemplo, clientcmd, 1, [tu_id_de_cancion].
+Explicación: Se utiliza para influir en la reproducción de música en la sala. Puedes votar para que una pista específica se reproduzca, o si hay un sistema de votación "para saltar pista", este comando también participaría en ello.
+Generar Avatar (spawnavatar)
+
+ID del Comando: 101
+Parámetros: Ninguno
+Explicación: Hace que tu avatar (o el avatar del bot) aparezca visible en el lienzo de juego. Si tu avatar ya está visible, este comando puede refrescar su estado o hacer que reaparezca si se había ocultado. Es esencial si quieres que tu bot se mueva por el mapa.
+Votar para Adelantar Ronda (trackforwardvoting)
+
+ID del Comando: 321
+Parámetros: Ninguno
+Explicación: Envía una señal al servidor para participar en una votación que adelanta la ronda actual. Si suficientes jugadores (o bots) envían este comando, la ronda de dibujo o adivinanza puede finalizar antes de tiempo.
+Iniciar Votación para Revertir Lienzo (startrollbackvoting)
+
+ID del Comando: 320
+Parámetros: Ninguno
+Explicación: Este comando inicia una votación para "revertir" el lienzo, lo que a menudo significa borrar lo que se ha dibujado o regresar a un estado anterior. Es útil para limpiar el área de dibujo si hay garabatos o errores.
+Otros Comandos clientcmd
+
+Estos son otros comandos importantes que te permiten controlar diversas funcionalidades del juego.
+
+Establecer Bandera de Estado (setstatusflag)
+ID del Comando: 3
+Parámetros: flagid (número entero), isactive (booleano: true/false)
+flagid: Un número que identifica el tipo de bandera de estado (ej. 0 para "Música", 1 para "AFK 1", 2 para "AFK 2", etc.).
+isactive: true para activar la bandera, false para desactivarla.
+Explicación: Te permite mostrar u ocultar iconos de estado sobre tu avatar, como un icono de música, AFK (Ausente del Teclado) o si tienes el inventario abierto.
+
+Obtener Inventario (getinventory)
+ID del Comando: 10
+Parámetros: [true] (un arreglo con un valor booleano, generalmente true)
+Explicación: Solicita al servidor una actualización de los ítems que tienes en tu inventario.
+
+Comprar Ítem (buyitem)
+ID del Comando: 11
+Parámetros: [itemid] (número entero dentro de un arreglo)
+itemid: El identificador del ítem que deseas comprar de la tienda del juego.
+Explicación: Permite realizar compras de ítems en el juego utilizando tu moneda virtual.
+
+Activar/Desactivar Ítem (activateitem)
+ID del Comando: 12
+Parámetros: [itemid, isactive] (número entero, booleano dentro de un arreglo)
+itemid: El identificador del ítem que deseas activar o desactivar.
+isactive: true para activar el ítem, false para desactivarlo.
+Explicación: Controla el estado de un ítem que ya posees. Por ejemplo, si tienes un pincel especial, puedes activarlo para usarlo.
+
+Cambiar Propiedad de Avatar (setavatarprop)
+ID del Comando: 115
+Parámetros: Ninguno
+Explicación: Este comando se usa para alternar o cambiar una propiedad específica de cómo se ve tu avatar. Un uso común es cambiar entre la forma cuadrada y la forma redonda del avatar.
+
+Obtener Estado de Avatares Generados (getspawnsstate)
+ID del Comando: 102
+Parámetros: Ninguno
+Explicación: Pide al servidor información sobre la posición y visibilidad de todos los avatares que están generados (spawned) en el lienzo del juego.
+
+Mover Avatar (moveavatar)
+ID del Comando: 103
+Parámetros: [packedPosition, isTeleport] (número entero, booleano dentro de un arreglo)
+packedPosition: Una representación numérica de las coordenadas X e Y (0-100% del lienzo) combinadas en un solo entero. Tu cliente de bot es quien realiza esta codificación.
+isTeleport: Generalmente false. Si fuera true, tu avatar se teletransportaría instantáneamente en lugar de moverse suavemente.
+Explicación: Mueve tu avatar a una posición específica en el lienzo de juego.
+
+Establecer Posición de Objeto en Lienzo (canvasobj_setposition)
+ID del Comando: 230
+Parámetros: [itemid, positionX, positionY, options] (número entero, float, float, objeto con opciones)
+itemid: ID del objeto del lienzo (sticker, etc.).
+positionX, positionY: Coordenadas X e Y (0-100%) en el lienzo.
+options: Un objeto para configurar propiedades adicionales, como { movespeed: velocidad }.
+Explicación: Controla dónde se ubica un objeto interactivo (como un sticker o decoración) en el área de dibujo.
+
+Establecer Rotación de Objeto en Lienzo (canvasobj_setrotation)
+ID del Comando: 231
+Parámetros: [itemid, rotation] (número entero, float)
+itemid: ID del objeto del lienzo.
+rotation: Ángulo de rotación en grados.
+Explicación: Rota un objeto interactivo en el lienzo a un ángulo específico.
+
+Eliminar Objeto de Lienzo (canvasobj_remove)
+ID del Comando: 232
+Parámetros: [itemid] (número entero dentro de un arreglo)
+itemid: ID del objeto del lienzo a eliminar.
+Explicación: Quita un objeto interactivo del área de dibujo.
+
+Obtener Objetos de Lienzo (canvasobj_getobjects)
+ID del Comando: 233
+Parámetros: Ninguno
+Explicación: Solicita al servidor una lista de todos los objetos interactivos que están actualmente en el lienzo.
+
+Cambiar Atributo de Objeto en Lienzo (canvasobj_changeattr)
+ID del Comando: 234
+Parámetros: [itemid, target, value] (número entero, cadena, cualquier tipo)
+itemid: ID del objeto del lienzo.
+target: Nombre del atributo a cambiar (ej. "scale", "opacity").
+value: El nuevo valor para el atributo.
+Explicación: Permite modificar propiedades específicas de un objeto interactivo en el lienzo, como su tamaño, opacidad, etc.
+
+Emitir Voto Personalizado (customvoting_setvote)
+ID del Comando: 301
+Parámetros: [value] (número entero dentro de un arreglo)
+value: El valor del voto que estás emitiendo en una votación personalizada.
+Explicación: Se usa para participar en sistemas de votación que los administradores o ciertas salas pueden implementar (no es el sistema de votación de ronda estándar).
+
+Obtener FPID (getfpid)
+ID del Comando: 901
+Parámetros: [value] (puede ser un token, ID de sesión, etc., dentro de un arreglo)
+Explicación: Probablemente un comando interno para obtener un identificador de "huella digital" (Fingerprint ID) del cliente, usado para telemetría o seguridad por el servidor.
+
+Enviar Mensaje Temporal (snapchatmessage)
+ID del Comando: 330
+Parámetros: [playerid, value] (número entero, cadena dentro de un arreglo)
+playerid: El ID del jugador al que se le enviará el mensaje.
+value: El contenido del mensaje temporal.
+Explicación: Envía un mensaje a otro jugador que está diseñado para ser de corta duración o efímero, como los mensajes de Snapchat.
+
+Otorgar Emblema/Token (settoken)
+ID del Comando: 2
+Parámetros: [playerid, tokenid] (número entero, número entero dentro de un arreglo)
+playerid: El ID del jugador al que se le otorgará el emblema.
+tokenid: El ID del tipo de emblema (ej. 0 para "Pulgar Arriba", 1 para "Corazón", etc.).
+Explicación: Permite enviar una "recompensa" o "mención de honor" a otro jugador en la sala.
+
+Espero que esta lista detallada te sea de gran utilidad para entender y experimentar con los comandos clientcmd de Drawaria. ¡A divertirse!
